@@ -3,15 +3,52 @@
         <title> Contact Us </title>
         <link rel="stylesheet" type="text/css" href="main.css">
         <link rel="stylesheet" type="text/css" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+        <script>
+           function getinformation()
+           {
+               var TermsandConditions = document.getElementById("Terms and Conditions").value;
+                   windw.alert("Need to check box" + TermsandConditions);
+                
+           } 
+        function checkboxes()
+        {
+            var emailaddress = document.getElementById("Email Address").value;
+            if(emailaddress == "")
+            {
+              document.getElementById("Email Address").style.backgroundColor = "red";  
+              document.getElementById("Email Address").focus();
+
+            }
+            var Firstname = document.getElementById("First Name").value;
+            if(Firstname == "")
+            {
+                document.getElementById("First Name").style.backgroundColor = "red";
+                document.getElementById("First Name").focus();
+            }
+        }
+       
+
+        </script>
+        <style>
+            body{
+                background-color: blanchedalmond;
+            }
+        </style>
+
     </head>
     <body>
-        <h1> Please enter your email and password</h1>
+        <h1> Contact Us</h1>
         <br />
 
         <form action="Contactuspage.html" type="Post">
-            Email Address: <input type="text" id="Email Address"><br>
-            Password: <input type="text" id="Password"><br>
-            <button id="Confirm" type="button" >confirm</button> 
+            <p></p>
+
+            <p>First Name: <input type="text" id="First Name"></p>
+            <p>Email Address: <input type="text" id="Email Address"></p>
+            <button id="Confirm" onclick = 'checkboxes()'; type="button" >Confirm</button> 
+            <input type ="checkbox" id="Terms and conditions"> Terms and Conditions</input> 
+            <br>
+
             <a href="homepage.html">Go back home</a> 
             <a href="secondpage.html">Go to second page</a> 
         </form>
