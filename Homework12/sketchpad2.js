@@ -21,9 +21,18 @@ var CircleYSpeed;
 //when the mouse is clicked a shape appears
 var mouseShapeX;
 var mouseShapeY;
+
+var Rectangleobject;
+var Rectangleabjecttwo;
+
 function setup()
 {
+    // create the object
+    Rectangleobject = new Rectangle(200,170,10, 50, 50, 150, 75);
+    Rectangleabjecttwo = new Rectangle(170,250,100,170,90,75,150);
+   
     createCanvas(800,600);
+    
     //a random speed to start
     ShapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
     ShapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
@@ -37,6 +46,10 @@ function draw()
     background(30,400,150);
     stroke(0);
     fill(0);
+
+    // create and display object
+    Rectangleobject.display();
+    Rectangleabjecttwo.display();
 
     // call createoutlining function
     createoutlinging(15);
@@ -174,6 +187,7 @@ function drawcharacter()
 
 function createoutlinging(thickness)
 {
+    fill(50,20,75)
      // top border
      rect(0,0,width,thickness);
      // left border
