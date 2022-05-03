@@ -10,13 +10,24 @@ var d = 68;
 //x and y for a random shape
 var shapeX = 15;
 var shapeY = 25;
-var ShapeXSpeed;
-var ShapeYSpeed;
+
+var ShapeXs = [];
+var ShapeYs = [];
+var diameters = [];
+
+var ShapeXSpeed = [];
+var ShapeYSpeed = [];
+
 //x and y for second random shape
 var CircleX = 20;
 var CircleY = 30;
-var CircleXSpeed;
-var CircleYSpeed;
+
+var CircleXs = [];
+var CircleYs = [];
+var diameters1 = [];
+
+var CircleXSpeed = [];
+var CircleYSpeed = [];
 
 //when the mouse is clicked a shape appears
 var mouseShapeX;
@@ -34,10 +45,23 @@ function setup()
     createCanvas(800,600);
     
     //a random speed to start
-    ShapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-    ShapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-    CircleXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1);
-    CircleYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1); 
+    for (var i = 0; i < 50; i++){
+    ShapeXSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
+    ShapeYSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
+    CircleXSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1);
+    CircleYSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1); 
+    ShapeXs [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 500)) + 1); 
+    ShapeYs [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 440)) + 1); 
+    diameters [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 40)) + 1); 
+    CircleXs [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 400)) + 1); 
+    CircleYs [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 450)) + 1); 
+    diameters1 [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 60)) + 1); 
+   
+   
+   
+   
+    }
+
     createCharacter(200,100);
 
 }
@@ -66,13 +90,7 @@ function draw()
    movingfirstshape();
    drawfirstbadguy();
    drawsecondbadguy();
-    
-    //random speed 
-    ShapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-    ShapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-    //random speed
-    CircleXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1);
-    CircleYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1); 
+     
    
     // create the shape based on the mouse clicks
     fill(100,200,345);
@@ -85,58 +103,84 @@ function drawsecondbadguy()
       fill(100,230,200);
       //shape
       circle(CircleX,CircleY, 35);
+      for (var i = 0; i < 50; i++)
+      {
+          console.log (CircleXs[i]);
+          circle(CircleXs[i], CircleYs[i], diameters[i]);
+          CircleXs[i]=CircleXs[i]+CircleXSpeed[i]
+          CircleYs[i]=CircleYs[i]+CircleYSpeed[i]
+          if (CircleXs[i]> width)
+          {
+              CircleXs[i]=0
+          }
+          if (CircleYs[i]> height)
+          {
+              CircleYs[i]=0
+          }
+      }
 }
 function drawfirstbadguy()
 {
     // possible bad guy
     fill(150,130,250);
     //shape
-    circle(shapeX, shapeY, 25); 
+    circle(shapeX, shapeY, 25);
 }
 function movingfirstshape()
 {
+       //random speed
+       for (var i = 0; i < ShapeXs.length; i++) 
+     ShapeXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
+     ShapeYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
+     
      //move the shape
-     shapeX += ShapeXSpeed;
-     shapeY += ShapeYSpeed;
+     ShapeXs[i] += ShapeXSpeed[i];
+     ShapeYs[i] += ShapeYSpeed[i];
+
      // checking to see if the shape has gone out of bounds
-     if(shapeX > width)
+     if(ShapeXs[i] > width)
      {
-         shapeX = 0;
+         ShapeXs[i] = 0;
      }
-     if(shapeX < 0)
+     if(ShapeXs[i] < 0)
      {
-         shapeX = width;
+         ShapeXs[i] = width;
      }
-     if(shapeY > height)
+     if(ShapeYs[i] > height)
      {
-         shapeY = 0;
+         ShapeYs[i] = 0;
      }
-     if(shapeY < 0)
+     if(ShapeYs[i] < 0)
      {
-         shapeY = height;
+         ShapeYs[i] = height;
      }
 }
 function movingsecondshape()
 {
-     //move the second shape
-     CircleX += CircleXSpeed;
-     CircleY += CircleYSpeed;
+     //random speed
+     for (var i = 0; i < CircleXs.length; i++)
+    CircleXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1);
+    CircleYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1); 
+     
+    //move the second shape
+     CircleXs[i] += CircleXSpeed[i];
+     CircleYs[i] += CircleYSpeed[i];
      // checking to see if the shape has gone out of bounds
-     if (CircleX > width)
+     if (CircleXs[i] > width)
      {
-         CircleX =0;
+         CircleXs[i] =0;
      }
-     if(CircleX < 0)
+     if(CircleXs[i] < 0)
      {
-         CircleX = width;
+         CircleXs[i] = width;
      }
-     if(CircleY > height)
+     if(CircleYs[i] > height)
      {
-         CircleY = 0;
+         CircleYs[i] = 0;
      }
-     if(CircleY < 0)
+     if(CircleYs[i] < 0)
      {
-         CircleY = height;
+         CircleYs[i] = height;
      }
 }
 function exiting()
