@@ -35,21 +35,27 @@ var mouseShapeY;
 
 var Rectangleobject;
 var Rectangleabjecttwo;
+var Rectangleobjectthree;
+var Rectangleobjectfour;
 
 function setup()
 {
     // create the object
     Rectangleobject = new Rectangle(200,170,10, 50, 50, 150, 75);
     Rectangleabjecttwo = new Rectangle(170,250,100,170,90,75,150);
+    Rectangleobjectthree = new Rectangle(500,200,120,90,15,135,175);
+    Rectangleobjectfour = new Rectangle(350,350,90,90,200,150,200);
+    Rectangleobjectfive = new Rectangle(290,90,80,100,70,107,170);
+    Rectangleobjectsix = new Rectangle(100,500,50,75,95,250,170);
    
     createCanvas(800,600);
     
     //a random speed to start
-    for (var i = 0; i < 50; i++){
-    ShapeXSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-    ShapeYSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-    CircleXSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1);
-    CircleYSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1); 
+    for (var i = 0; i < 150; i++){
+    ShapeXSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    ShapeYSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    CircleXSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    CircleYSpeed [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1); 
     ShapeXs [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 500)) + 1); 
     ShapeYs [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 440)) + 1); 
     diameters [i] = Math.floor(Math.random() * (Math.floor(Math.random() * 40)) + 1); 
@@ -67,20 +73,24 @@ function setup()
 }
 function draw()
 {
-    background(30,400,150);
+    background(50,40,150);
     stroke(0);
     fill(0);
 
     // create and display object
     Rectangleobject.display();
     Rectangleabjecttwo.display();
+    Rectangleobjectthree.display();
+    Rectangleobjectfour.display();
+    Rectangleobjectfive.display();
+    Rectangleobjectsix.display();
 
     // call createoutlining function
     createoutlinging(15);
 
     // exit text 
-    textSize(20);
-    text("Exit", width-50, height-50)
+    textSize(25);
+    text("Finish Line", width-150, height-60)
 
    //createCharacter(200,100);
    drawcharacter();
@@ -93,17 +103,17 @@ function draw()
      
    
     // create the shape based on the mouse clicks
-    fill(100,200,345);
+    fill(160,20,345);
     circle(mouseShapeX, mouseShapeY, 30);
 
 }
 function drawsecondbadguy()
 {
       // possible bad number two
-      fill(100,230,200);
+      fill(150,200,20);
       //shape
       circle(CircleX,CircleY, 35);
-      for (var i = 0; i < 50; i++)
+      for (var i = 0; i < 150; i++)
       {
           console.log (CircleXs[i]);
           circle(CircleXs[i], CircleYs[i], diameters[i]);
@@ -130,8 +140,8 @@ function movingfirstshape()
 {
        //random speed
        for (var i = 0; i < ShapeXs.length; i++) 
-     ShapeXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
-     ShapeYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 3)) + 1);
+     ShapeXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+     ShapeYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
      
      //move the shape
      ShapeXs[i] += ShapeXSpeed[i];
@@ -159,8 +169,8 @@ function movingsecondshape()
 {
      //random speed
      for (var i = 0; i < CircleXs.length; i++)
-    CircleXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1);
-    CircleYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 4)) + 1); 
+    CircleXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    CircleYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1); 
      
     //move the second shape
      CircleXs[i] += CircleXSpeed[i];
@@ -188,10 +198,10 @@ function exiting()
      //checking to see if the character has left the building
     if(characterX > width && characterY > height-50)
     {
-        fill(250,100,400);
+        fill(250,100,100);
         stroke(15);
         textSize(30);
-        text("Hooray You Made It!!", width/2-50, height/2-50);  
+        text("GAME OVER!!", width/2-50, height/2-50);  
     }
 }
 
@@ -231,7 +241,7 @@ function drawcharacter()
 
 function createoutlinging(thickness)
 {
-    fill(50,20,75)
+    fill(150,25,100)
      // top border
      rect(0,0,width,thickness);
      // left border
