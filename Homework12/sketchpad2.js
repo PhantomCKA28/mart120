@@ -37,6 +37,8 @@ var Rectangleobject;
 var Rectangleabjecttwo;
 var Rectangleobjectthree;
 var Rectangleobjectfour;
+var Rectangleobjectfive;
+var Rectangleobjectsix;
 
 function setup()
 {
